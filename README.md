@@ -1,0 +1,4 @@
+# ECOS
+Energy Consumption Optimization Service
+
+The ECOS program reads values from performance counters every fixed period of time. Based on these values it decides whether to increase or decrease the frequency of the processor. The program controls independently the frequencies for each hardware thread in the system (according to the division nomenclature: processor -> core -> hardware thread). In the case of a decision to change the frequency, it is changed by 100MHz, so the change between the maximum and minimum frequency of the processor usually takes several program cycles (one cycle is understood as the operation of reading meters for each thread, the decision to change the frequency and its potential execution). Frequency change is forced by writing the new maximum frequency for the hardware thread and it is specified in the file /sys/devices/system/cpu/cpu/cpu<id>/cpufreq/scaling_max_freq, this method is compatible with cpufreq and intel-pstate.
